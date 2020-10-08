@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Lexend+Peta&family=Roboto:ital,wght@0,400;0,700;0,900;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<meta charset="utf-8" />
+<title>{% block title %}{% endblock %}</title>
+<link href="{% static "base.css" %}" rel="stylesheet">
+</head>
+<body>
+{#<div id="header">#}
+{#<a href="/" class="logo">Мой магазин</a>#}
+{#</div>#}
+
+            <!-- Top Navigation mobile Menu -->
+<div class="topnav" style="position: relative;">
+  <img class="logoimg"  src="{% static 'assets/img/logo2.png' %}">
+  <div id="myLinks">
+    <a href="{% url 'home' %}">ГЛАВНАЯ</a>
+    <a href="{% url 'shop' %}">МАГАЗИН</a>
+    <a href="{% url 'lookbook' %}">LOOKBOOK</a>
+    <a href="{% url 'about' %}">О НАС</a>
+    <a href="{% url 'about' %}">КОНТАКТЫ</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i style="font-size: 60px;" class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+	    <div class="row">
+	          <div class="logo">
+	            <dir class="col-md-3" style="float: left;margin-left: 15px;text-align: center;">
+                    <a href="{% url 'home' %}"> <img class="logoimg"  src="{% static 'assets/img/logo.png'  %}"></a>
+	            </dir>
+	               <div class="col-12 men" style="float: right; width: auto; margin-right: 40px;">
+	                <ul id="navbar">
+	                      <li><a href="{% url 'shop' %}">МАГАЗИН</a></li>
+	                        <li><a href="{% url 'lookbook' %}">LOOKBOOK</a></li>
+	                        <li><a href="{% url 'about' %}">О НАС</a></li>
+	                        <li><a href="{% url 'contact' %}">КОНТАКТЫ</a></li>
+{#                          <li> <i class="fa fa-search" style="color: #000; margin-left: 17px;"></i>&nbsp;#}
+	                  </li>
+{#	                   <a class="fa fa-bars" style="color: #000;margin-left: 17px;" href="#zatemnenie"></a>&nbsp;#}
+
+	                  </ul>
+	               </div>
+	               <div>
+	               </div>
+	               <div  class="burger">
+	               	 <li> <i class="fa fa-bars" style="color: #000;float: right;font-size: 55px;margin-right: 80px;margin-top: 10px;"></i>&nbsp;
+	                  </li>
+	               </div>
+
+	           </div>
+		    </div>
+
+<div class="row" id="subheader">
+<h4 class="cor" style="width: 80%;">Корзина покупок</h4>
+<div class="cart">
+    {% with total_items=cart|length %}
+    {% if cart|length > 0 %}
+    В корзине:
+    <a href="{% url 'cart:cart_detail' %}">
+    {{ total_items }} шт , {{ cart.get_total_price }} тг
+    </a>
+        {% else %}
+         Корзина пустая.
+    {% endif %}
+    {% endwith %}
+   </div>
+</div>
+<div class="carta" id="content">
+{% block content %}{% endblock %}
+</div>
+
+<section>
+	<div class="foot">
+		<div class="containere">
+			<div class="line3"></div>
+				<div class="logo" style="margin-top: 25px;">
+				    <dir class="col-md-2" style="float: left;">
+				     <a href="{% url 'home' %}"> <img class="logoimg" style="max-height: 17px;" src="{% static 'assets/img/logo2.png' %}"></a>
+				    </dir>
+
+				          	<li class="mob" style="width: 80px; float: right;margin-right: 30px;margin-top: 6px;"> <i class="fab fa-instagram" style="color: #fff; margin-left: 17px; font-size: 60px;"></i>&nbsp;</li>
+				            <li class="mob" style="width: 80px; float: right;margin-right: 30px;margin-top: 6px;"> <i class="fab fa-whatsapp" style="color: #fff;margin-left: 17px;font-size: 60px;"></i>&nbsp;</li>
+
+				       <div class="col-12 men" style="float: right; width: auto; margin-right: 40px;">
+				        <ul id="navbar">
+                            <li><a href="{% url 'shop' %}">МАГАЗИН</a></li>
+	                        <li><a href="{% url 'lookbook' %}">LOOKBOOK</a></li>
+	                        <li><a href="{% url 'about' %}">О НАС</a></li>
+	                        <li><a href="{% url 'contact' %}">КОНТАКТЫ</a></li>
+{#				              <li> <i class="fab fa-instagram" style="color: #fff; margin-left: 17px;"></i>&nbsp;</li>#}
+{#				              <li> <i class="fab fa-whatsapp" style="color: #fff;margin-left: 17px;"></i>&nbsp;</li>#}
+				          </ul>
+
+				       </div>
+				       <div>
+				       </div>
+
+				</div>
+				<div class="nextin">
+					<p>ТОО - MATLUBA.<br>2020, MATLUBA. Политика конфиденциальности</p>
+					<a href="">dev by &nbsp;<img src="{% static 'assets/svg/nextin.svg' %}"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</body>
+<style>
+    #navbar li a {
+		color: #000;
+	}
+    .carta {
+        margin-top: 60px;
+    }
+</style>
+</html>
